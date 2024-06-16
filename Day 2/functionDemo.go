@@ -91,4 +91,5 @@ func main() {
 	func() {
 		fmt.Println(l * b)
 	}()
+
 }
