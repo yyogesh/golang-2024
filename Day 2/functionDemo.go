@@ -50,7 +50,7 @@ func squareSum(x int) func(int) func(int) int {
 
 // redux connect()()
 
-func main() {
+func main3() {
 	// partialFun := partialSum(3)
 	// fmt.Println(partialFun(10))
 	fmt.Println(partialSum(3)(10))
