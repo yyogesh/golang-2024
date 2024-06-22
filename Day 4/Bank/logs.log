@@ -1,0 +1,27 @@
+Bank : 2024-06-22 5:10:23 AM: Bank.go:60: Enter your choice
+Bank : 2024-06-22 5:10:23 AM: Bank.go:63: You choose: 3
+Bank : 2024-06-22 5:10:23 AM: Bank.go:101: You choose to check balance:  1000
+Bank : 2024-06-22 5:10:23 AM: Bank.go:60: Enter your choice
+Bank : 2024-06-22 5:10:23 AM: Bank.go:63: You choose: 1
+Bank : 2024-06-22 5:10:23 AM: Bank.go:68: You choose to deposit
+Bank : 2024-06-22 5:10:23 AM: Bank.go:78: Amount Deposited! New Balance:1100
+Bank : 2024-06-22 5:10:23 AM: Bank.go:60: Enter your choice
+Bank : 2024-06-22 5:10:23 AM: Bank.go:63: You choose: 4
+Bank : 2024-06-22 5:10:23 AM: Bank.go:105: You choose to exit
+Bank : 2024-06-22 5:10:23 AM: Bank.go:60: Enter your choice
+Bank : 2024-06-22 5:10:23 AM: Bank.go:63: You choose: 0
+Bank : 2024-06-22 5:21:33 AM: Bank.go:73: Error reading
+Bank : 2024-06-22 5:21:33 AM: Bank.go:74: Failed to read data from file
+Bank : 2024-06-22 5:21:33 AM: Bank.go:75: --------------------------------
+Bank : 2024-06-22 5:22:03 AM: Bank.go:90: Enter your choice
+Bank : 2024-06-22 5:22:03 AM: Bank.go:93: You choose: 3
+Bank : 2024-06-22 5:22:03 AM: Bank.go:133: You choose to check balance:  400
+Bank : 2024-06-22 5:22:03 AM: Bank.go:90: Enter your choice
+Bank : 2024-06-22 5:22:03 AM: Bank.go:93: You choose: 1
+Bank : 2024-06-22 5:22:03 AM: Bank.go:98: You choose to deposit
+Bank : 2024-06-22 5:22:03 AM: Bank.go:109: Amount Deposited! New Balance:900
+Bank : 2024-06-22 5:22:03 AM: Bank.go:90: Enter your choice
+Bank : 2024-06-22 5:22:03 AM: Bank.go:93: You choose: 3
+Bank : 2024-06-22 5:22:03 AM: Bank.go:133: You choose to check balance:  900
+Bank : 2024-06-22 5:22:03 AM: Bank.go:90: Enter your choice
+Bank : 2024-06-22 5:22:03 AM: Bank.go:93: You choose: 0
