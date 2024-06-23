@@ -1,12 +1,11 @@
 package main
 
 import (
-	"errors"
+	"banking/fileHandling"
 	"fmt"
 	"io"
 	"log"
 	"os"
-	"strconv"
 	"time"
 )
 
@@ -26,26 +25,6 @@ const (
 	// abbreviated text date: Mar 23 Wed
 	AbbrTextDate = "Jan 2 Mon"
 )
-
-func writeValueInFile(fileName string, value float64) {
-	valueText := fmt.Sprint(value)
-	os.WriteFile(fileName, []byte(valueText), 0644)
-}
-
-func readDataFromFile(fileName string, defaultValue float64) (float64, error) {
-	data, err := os.ReadFile(fileName)
-	if err != nil {
-		fmt.Println(err)
-		return defaultValue, errors.New("Failed to read data from file")
-	}
-	valueText := string(data)
-	value, err := strconv.ParseFloat(valueText, 64)
-	if err != nil {
-		fmt.Println(err)
-		return defaultValue, errors.New("Failed to parse float value: " + valueText)
-	}
-	return value, nil
-}
 
 func main() {
 	// Defines flags
@@ -68,7 +47,7 @@ func main() {
 	mw := io.MultiWriter(os.Stdout, file)
 	logger.SetOutput(mw)
 
-	var accountBalance, fileError = readDataFromFile(balanceFile, 1000)
+	var accountBalance, fileError = fileHandling.ReadDataFromFile(balanceFile, 1000)
 	if fileError != nil {
 		logger.Println("Error reading")
 		logger.Println(fileError)
@@ -77,12 +56,7 @@ func main() {
 	}
 	// while(true){}
 	for {
-		fmt.Println("Welcome to ABC Bank")
-		fmt.Println("What do you want to do?")
-		fmt.Println("1. Deposit")
-		fmt.Println("2. Withdraw")
-		fmt.Println("3. Check Balance")
-		fmt.Println("4. Exit")
+		bankingOptions()
 
 		var choice int
 		// fmt.Println("Enter your choice")
@@ -105,7 +79,7 @@ func main() {
 				}
 
 				accountBalance = accountBalance + depositBalance
-				writeValueInFile(balanceFile, accountBalance)
+				fileHandling.WriteValueInFile(balanceFile, accountBalance)
 				logger.Print("Amount Deposited! New Balance:", accountBalance)
 			}
 		case 2:
@@ -125,7 +99,7 @@ func main() {
 				}
 
 				accountBalance -= withdrawBalance
-				writeValueInFile(balanceFile, accountBalance)
+				fileHandling.WriteValueInFile(balanceFile, accountBalance)
 				logger.Print("Amount Withdrawn! New Balance: ", accountBalance)
 			}
 		case 3:
