@@ -24,7 +24,7 @@ func alphabets() {
 	// <- //  => // ->
 }
 
-func main() {
+func main1() {
 	go numbers()
 	go alphabets()
 	time.Sleep(15 * time.Second)
