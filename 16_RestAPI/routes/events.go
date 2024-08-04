@@ -36,6 +36,21 @@ func getEvents(context *gin.Context) {
 }
 
 func createEvents(context *gin.Context) { // request postman body raw json format
+
+	// token := context.Request.Header.Get("Authorization")
+
+	// if token == "" {
+	// 	context.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+	// 	return
+	// }
+
+	// userId, err := utils.VerifyToken(token)
+
+	// if err != nil {
+	// 	context.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+	// 	return
+	// }
+
 	var event models.Event
 	err := context.ShouldBindJSON(&event) // fmt.scanF
 
@@ -45,7 +60,7 @@ func createEvents(context *gin.Context) { // request postman body raw json forma
 	}
 
 	event.ID = 1
-	event.UserId = 1
+	event.UserId = context.GetInt64("userId")
 
 	err = event.Save()
 	if err != nil {
