@@ -80,6 +80,22 @@ func GetEventById(id int64) (*Event, error) {
 	return &event, nil
 }
 
+func GetEventByIdByUserID(id, userId int64) (*Event, error) {
+	query := `SELECT * FROM events WHERE id = ? AND user_id = ?`
+	row := db.DB.QueryRow(query, id, userId)
+
+	var event Event
+	err := row.Scan(&event.ID, &event.Name, &event.Description, &event.Location, &event.DateTime, &event.UserId)
+
+	if err == sql.ErrNoRows {
+		return nil, fmt.Errorf("event not found with id %d", id)
+	} else if err != nil {
+		return nil, err
+	}
+
+	return &event, nil
+}
+
 func (event Event) Update() error {
 	query := `
     UPDATE events SET name=?, description=?, location=?, dateTime=? WHERE id=?`
@@ -118,4 +134,34 @@ func (event Event) Delete() error {
 	}
 
 	return nil
+}
+
+func (e Event) Register(userId int64) error {
+	query := "INSERT INTO registrations(event_id, user_id) VALUES (?, ?)"
+	stmt, err := db.DB.Prepare(query)
+
+	if err != nil {
+		return err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(e.ID, userId)
+
+	return err
+}
+
+func (e Event) CancelRegistration(userId int64) error {
+	query := "DELETE FROM registrations WHERE event_id = ? AND user_id = ?"
+	stmt, err := db.DB.Prepare(query)
+
+	if err != nil {
+		return err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(e.ID, userId)
+
+	return err
 }

@@ -67,6 +67,13 @@ func createEvents(context *gin.Context) { // request postman body raw json forma
 		context.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
+	err = event.Register(event.UserId)
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"error in event user registeration": err.Error()})
+		return
+	}
+
 	context.JSON(http.StatusCreated, gin.H{"message": "Event created!", "event": event}) // 201 Created status code
 
 }
