@@ -1,0 +1,10 @@
+mode: set
+unit_test_case/main.go:5.13,10.2 3 0
+unit_test_case/main.go:12.36,14.22 1 1
+unit_test_case/main.go:14.22,16.3 1 1
+unit_test_case/main.go:19.2,19.11 1 1
+unit_test_case/main.go:19.11,21.3 1 0
+unit_test_case/main.go:24.2,24.28 1 1
+unit_test_case/main.go:24.28,25.15 1 1
+unit_test_case/main.go:25.15,27.4 1 0
+unit_test_case/main.go:29.2,29.54 1 1
