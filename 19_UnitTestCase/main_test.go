@@ -34,6 +34,8 @@ func Test_isPrime1(t *testing.T) {
 		{"One", 1, false, "1 is not prime, by definition!"},
 		{"Two", 2, true, "2 is a prime number!"},
 		{"Seven", 7, true, "7 is a prime number!"},
+		{"Not prime", 8, false, "8 is not a prime number because it is divisible by 2"},
+		{"negative", -2, false, "Negative numbers are not prime, by definition!"},
 	}
 
 	for _, tt := range primeTests {
