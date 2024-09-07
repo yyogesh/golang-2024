@@ -16,10 +16,10 @@ type TemplateData struct {
 func (app *application) Home(w http.ResponseWriter, r *http.Request) {
 	// fmt.Fprintf(w, "Hello, world from %s", app.Domain)
 	w.Header().Set("Content-Type", "text/html")
-	app.render(w, "home.page.gohtml", &TemplateData{})
+	app.render(w, r, "home.page.gohtml", &TemplateData{})
 }
 
-func (app *application) render(w http.ResponseWriter, tmpl string, data *TemplateData) error {
+func (app *application) render(w http.ResponseWriter, r *http.Request, tmpl string, data *TemplateData) error {
 	parsedTemplate, err := template.ParseFiles(path.Join(pathToTemplate, tmpl))
 
 	if err != nil {
@@ -27,7 +27,7 @@ func (app *application) render(w http.ResponseWriter, tmpl string, data *Templat
 		return err
 	}
 
-	data.IP = "198.158.938.11"
+	data.IP = app.ipFormContext(r.Context())
 
 	err = parsedTemplate.Execute(w, data)
 
